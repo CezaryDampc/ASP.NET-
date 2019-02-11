@@ -1,0 +1,36 @@
+﻿@model IEnumerable<Projekt1.Models.Brand>
+
+@{
+    ViewBag.Title = "Kategorie samochodów";
+}
+
+<h2>Index</h2>
+
+<p>
+    <input type="submit" onclick="location.href='@Url.Action("Index","Brand/Create")'" value="Utwórz" />
+    <input type="submit" onclick="location.href='@Url.Action("Index","Clients/Index")'" value="Klienci" />
+    <input type="submit" onclick="location.href='@Url.Action("Index","Orders/Index")'" value="Zamówienia" />
+</p>
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.ActionLink(item.name, "Index", "Model")
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new {  id=item.Id_brand }) |
+            @Html.ActionLink("Delete", "Delete", new {  id=item.Id_brand })
+        </td>
+    </tr>
+}
+
+</table>
